@@ -12,7 +12,7 @@ def printHelp():
     print("\t(由於OSC的限制，使用OSC發送訊息，別人將無法聽見提示音)")
     print("::atb\t自動返回VRChat ※僅在OSC模式下可用 此功能預設關閉")
     print("\t啟用後 按下Enter鍵送出訊息後，立即使用Alt+Tab返回VRChat")
-    print("\t此功能啟用狀態下，再輸入一次即關閉此功能")
+    print("\t在啟用狀態下，再輸入一次即關閉此功能")
     print("::exit\t退出程式")
     print("::help\t顯示此幫助")
 
