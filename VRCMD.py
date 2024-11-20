@@ -17,8 +17,23 @@ def printHelp():
     print("\t預設為127.0.0.1，如果發訊端與執行VRChat的裝置不同，則應使用此選項")
     print("::port\t變更目標Port")
     print("\t預設為9000")
+    print("::bv\t自動擷取網址內的BV號加上純K的解析API並複製到剪貼簿")
     print("::exit\t退出程式")
     print("::help\t顯示此幫助")
+
+def clipURL():
+    prefix = "http://ckapi.sevenbrothers.cn/bili/api?id="
+    bvid = input("輸入B站URL:")
+    if bvid[0:2:] != "BV":
+        for i in bvid.split('/'):
+            if i[0:2:] == "BV":
+                bvid = i
+                if "?" in bvid:
+                    bvid = bvid.split('?')[0]
+                    break
+                break
+    print("已將鏈接複製至剪貼簿")
+    pyperclip.copy(prefix+bvid)
 
 def useKbd():
     keyboard = Controller()
@@ -38,6 +53,9 @@ def useKbd():
             break
         elif message.lower() == "::osc":
             break
+        elif message.lower() == "::bv":
+            clipURL()
+            continue
         elif message.lower() == "::help":
             printHelp()
             continue
@@ -128,6 +146,9 @@ def useOSC():
                 print("鍵入值異常(請輸入1024~65535的整數) 已變更為預設值")
             client = SimpleUDPClient(ip, port)
             print(f"OSC Client 已連線至 {ip}:{port}")
+            continue
+        elif message.lower() == "::bv":
+            clipURL()
             continue
         elif message.lower() == "::help":
             printHelp()
