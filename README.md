@@ -6,3 +6,6 @@
 ```bat
 pip install pyperclip pynput python-osc
 ```
+# 示範影片
+[(YouTube外部鏈接🔗)](https://youtu.be/gAT6OkfPw1I)
+[![VRCMD測試](https://i.ytimg.com/vi/gAT6OkfPw1I/maxresdefault.jpg)](https://youtu.be/gAT6OkfPw1I)
