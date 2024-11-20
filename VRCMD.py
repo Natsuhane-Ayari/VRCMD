@@ -13,6 +13,10 @@ def printHelp():
     print("::atb\t自動返回VRChat ※僅在OSC模式下可用 此功能預設關閉")
     print("\t啟用後 按下Enter鍵送出訊息後，立即使用Alt+Tab返回VRChat")
     print("\t在啟用狀態下，再輸入一次即關閉此功能")
+    print("::ip\t變更目標IP")
+    print("\t預設為127.0.0.1，如果發訊端與執行VRChat的裝置不同，則應使用此選項")
+    print("::port\t變更目標Port")
+    print("\t預設為9000")
     print("::exit\t退出程式")
     print("::help\t顯示此幫助")
 
@@ -107,6 +111,23 @@ def useOSC():
             else:
                 print("自動返回VRChat 已關閉")
             autoback = not autoback
+            continue
+        elif message.lower() == "::ip":
+            ip = input("IP:")
+            if ip == "":
+                ip = "127.0.0.1"
+                print("鍵入值為空 已變更為預設值")
+            client = SimpleUDPClient(ip, port)
+            print(f"OSC Client 已連線至 {ip}:{port}")
+            continue
+        elif message.lower() == "::port":
+            try:
+                port = int(input("PORT:"))
+            except:
+                port = 9000
+                print("鍵入值異常(請輸入1024~65535的整數) 已變更為預設值")
+            client = SimpleUDPClient(ip, port)
+            print(f"OSC Client 已連線至 {ip}:{port}")
             continue
         elif message.lower() == "::help":
             printHelp()
